@@ -8,13 +8,13 @@ from langchain.schema import (
     HumanMessage,
     SystemMessage,
     messages_from_dict,
-    messages_to_dict
+    messages_to_dict,
 )
 
 
 @st.cache_resource
 def get_chat():
-    return ChatOpenAI(temperature=0)
+    return ChatOpenAI(temperature=0.7)
 
 
 chat = get_chat()
@@ -40,7 +40,8 @@ if "system_locked" not in st.session_state:
 system_prompter = st.text_area(
     "How should this assistant behave?",
     key="system_prompter",
-    disabled=st.session_state["system_locked"])
+    disabled=st.session_state["system_locked"],
+)
 
 """
 ## Interact
@@ -68,10 +69,12 @@ for index, message in enumerate(st.session_state["history"]):
         st.markdown(f"#### {message.content}")
     elif isinstance(message, AIMessage):
         st.markdown(message.content)
-        st.button("Remove this prompt",
-                  key=f"remove_{index}",
-                  on_click=remove_response_and_prompt,
-                  args=(index,))
+        st.button(
+            "Remove this prompt",
+            key=f"remove_{index}",
+            on_click=remove_response_and_prompt,
+            args=(index,),
+        )
 
 
 def submit_chat():
@@ -87,14 +90,15 @@ def submit_chat():
 
 
 chat_prompter = st.text_area(
-    "What would you like to ask your assistant?", key="chat_prompter")
+    "What would you like to ask your assistant?", key="chat_prompter"
+)
 st.button("Ask", on_click=submit_chat)
 
 if st.session_state["history"]:
-    number_of_tokens = chat.get_num_tokens_from_messages(
-        st.session_state["history"])
+    number_of_tokens = chat.get_num_tokens_from_messages(st.session_state["history"])
     st.markdown(
-        f"**Number of Tokens used in current conversation**: {number_of_tokens}")
+        f"**Number of Tokens used in current conversation**: {number_of_tokens}"
+    )
 
 
 def import_json_url(url):
@@ -110,4 +114,4 @@ def import_json_url(url):
 json_url = st.text_input("Import from JSON URL")
 st.button("Import", on_click=import_json_url, args=(json_url,))
 
-st.code(json.dumps(messages_to_dict(st.session_state['history'])))
+st.code(json.dumps(messages_to_dict(st.session_state["history"])))
