@@ -14,7 +14,7 @@ from langchain.schema import (
 
 @st.cache_resource
 def get_chat():
-    return ChatOpenAI(temperature=0.7)
+    return ChatOpenAI(temperature=0.7, max_tokens=500)
 
 
 chat = get_chat()
