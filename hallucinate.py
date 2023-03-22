@@ -1,4 +1,5 @@
 import json
+import os
 import requests
 import streamlit as st
 
@@ -101,17 +102,35 @@ if st.session_state["history"]:
     )
 
 
-def import_json_url(url):
-    response = requests.get(url)
-    json = response.json()
-    print(f"JSON was {json}")
-    messages = messages_from_dict(json)
+def import_json(json_obj):
+    messages = messages_from_dict(json_obj)
     st.session_state["history"] = messages
     st.session_state.system_prompter = messages[0].content
     st.session_state["system_locked"] = True
 
+def import_json_url(url):
+    response = requests.get(url)
+    json = response.json()
+    return import_json(json)
+
 
 json_url = st.text_input("Import from JSON URL")
 st.button("Import", on_click=import_json_url, args=(json_url,))
+
+def import_trip_from_file_name():
+    filename = st.session_state['trip_file_name']
+    full_filepath = os.path.join("trips", filename + ".json")
+    print(f"File path: {full_filepath}")
+    with open(full_filepath) as file:
+        json_str = file.read()
+    return import_json(json.loads(json_str))
+
+
+trip_file_name = st.selectbox("Choose an existing trip", 
+    options=(
+        "Changing this will automatically load the trip", 
+        "gpt-explanation"
+    ), on_change=import_trip_from_file_name, key="trip_file_name")
+
 
 st.code(json.dumps(messages_to_dict(st.session_state["history"])))
