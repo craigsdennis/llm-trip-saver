@@ -1,0 +1,1 @@
+[{"type": "system", "data": {"content": "Be good", "additional_kwargs": {}}}, {"type": "human", "data": {"content": "Are you bad?", "additional_kwargs": {}}}, {"type": "ai", "data": {"content": "As an AI language model, I don't have the ability to be good or bad. I am designed to assist and respond to your queries as accurately as possible.", "additional_kwargs": {}}}]
