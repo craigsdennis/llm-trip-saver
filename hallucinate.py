@@ -129,16 +129,20 @@ def import_trip_from_file_name():
 trip_file_name = st.selectbox("Choose an existing trip", 
     options=(
         "Changing this will automatically load the trip", 
-        "gpt-explanation"
+        "gpt-explanation",
+        "new-yorker",
     ), on_change=import_trip_from_file_name, key="trip_file_name")
 
 with st.form("save_trip"):
     name = st.text_input("What should this be called?")
     submitted = st.form_submit_button("Save")
     if submitted:
-        filepath = os.path.join("trips", name + ".json")
+        filepath = os.path.join("trips", "user-submitted", name + ".json")
         with open(filepath, "w") as f:
             f.write(json.dumps(messages_to_dict(st.session_state["history"])))
         print(f"Saved? {filepath}")
 
 st.code(json.dumps(messages_to_dict(st.session_state["history"])))
+
+for filename in os.listdir(os.path.join("trips", "user-submitted")):
+    st.write(filename)
