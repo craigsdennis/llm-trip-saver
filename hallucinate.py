@@ -17,6 +17,10 @@ from langchain.schema import (
 def get_chat():
     return ChatOpenAI(temperature=0.7, max_tokens=500)
 
+@st.cache_data
+def get_available_companies():
+    filenames = os.listdir(os.path.join("trips", "companies"))
+    return sorted([file.split(".")[0] for file in filenames])
 
 chat = get_chat()
 
@@ -26,6 +30,26 @@ chat = get_chat()
 There are cases where you might want to force an AI hallucination and then save it
 for replay to invite others in to the same context.
 """
+
+
+def load_trip_from_filename(trip_path):
+    full_filepath = os.path.join(trip_path, st.session_state["trip_file_name"] + ".json")
+    print(f"File path: {full_filepath}")
+    with open(full_filepath) as file:
+        json_str = file.read()
+    import_json(json.loads(json_str))
+
+
+with st.form("load_existing"):
+    trip_file_name = st.selectbox(
+        "Choose an existing Company Tip",
+        options=get_available_companies(),
+        key="trip_file_name",
+    )
+    st.form_submit_button("Load", on_click=load_trip_from_filename, kwargs={
+        "trip_path": os.path.join("trips", "companies")
+        })
+
 
 """
 ## System prompt
@@ -78,11 +102,17 @@ for index, message in enumerate(st.session_state["history"]):
         )
 
 
+if st.session_state["history"]:
+    number_of_tokens = chat.get_num_tokens_from_messages(st.session_state["history"])
+    st.markdown(
+        f"**Number of Tokens used in current conversation**: {number_of_tokens}"
+    )
+
 def submit_chat():
     messages = st.session_state["history"]
     if not messages:
         messages.append(SystemMessage(content=system_prompter))
-    messages.append(HumanMessage(content=chat_prompter))
+    messages.append(HumanMessage(content=st.session_state.chat_prompter))
     ai_message = chat(messages)
     messages.append(ai_message)
     st.session_state["history"] = messages
@@ -90,59 +120,40 @@ def submit_chat():
     st.session_state.chat_prompter = ""
 
 
-chat_prompter = st.text_area(
-    "What would you like to ask your assistant?", key="chat_prompter"
-)
-st.button("Ask", on_click=submit_chat)
-
-if st.session_state["history"]:
-    number_of_tokens = chat.get_num_tokens_from_messages(st.session_state["history"])
-    st.markdown(
-        f"**Number of Tokens used in current conversation**: {number_of_tokens}"
+with st.form("chat_prompt"):
+    chat_prompter = st.text_area(
+        "What would you like to ask your assistant?", key="chat_prompter"
     )
+    st.form_submit_button("Ask", on_click=submit_chat)
 
 
 def import_json(json_obj):
     messages = messages_from_dict(json_obj)
     st.session_state["history"] = messages
-    st.session_state.system_prompter = messages[0].content
+    st.session_state["system_prompter"] = messages[0].content
     st.session_state["system_locked"] = True
+    st.balloons()
 
-def import_json_url(url):
+
+def import_json_url():
+    url = st.session_state["json_url"]
     response = requests.get(url)
     json = response.json()
     return import_json(json)
 
+with st.expander("Additional storage and retrieval options"):
+    with st.form("save_trip"):
+        name = st.text_input("What should this be called?")
+        submitted = st.form_submit_button("Save")
+        if submitted:
+            filepath = os.path.join("trips", "user-submitted", name + ".json")
+            with open(filepath, "w") as f:
+                f.write(json.dumps(messages_to_dict(st.session_state["history"])))
+            print(f"Saved? {filepath}")
 
-json_url = st.text_input("Import from JSON URL")
-st.button("Import", on_click=import_json_url, args=(json_url,))
+    with st.form("import_json_url"):
+        json_url = st.text_input("Import from JSON URL", key="json_url")
+        st.form_submit_button("Import", on_click=import_json_url)
 
-def import_trip_from_file_name():
-    filename = st.session_state['trip_file_name']
-    full_filepath = os.path.join("trips", filename + ".json")
-    print(f"File path: {full_filepath}")
-    with open(full_filepath) as file:
-        json_str = file.read()
-    return import_json(json.loads(json_str))
-
-
-trip_file_name = st.selectbox("Choose an existing trip", 
-    options=(
-        "Changing this will automatically load the trip", 
-        "gpt-explanation",
-        "new-yorker",
-    ), on_change=import_trip_from_file_name, key="trip_file_name")
-
-with st.form("save_trip"):
-    name = st.text_input("What should this be called?")
-    submitted = st.form_submit_button("Save")
-    if submitted:
-        filepath = os.path.join("trips", "user-submitted", name + ".json")
-        with open(filepath, "w") as f:
-            f.write(json.dumps(messages_to_dict(st.session_state["history"])))
-        print(f"Saved? {filepath}")
-
-st.code(json.dumps(messages_to_dict(st.session_state["history"])))
-
-for filename in os.listdir(os.path.join("trips", "user-submitted")):
-    st.write(filename)
+    st.markdown("#### Raw JSON")
+    st.code(json.dumps(messages_to_dict(st.session_state["history"])))

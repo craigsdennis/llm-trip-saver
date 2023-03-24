@@ -60,6 +60,7 @@ def generate_company(industry):
         "What communication methods does {company_name} use to communicate with it's customers?",
         "What products and/or services does {company_name} offer?",
         "What sort of customer events would {company_name} track in their CDP?",
+        "What problems is {company_name} trying to solve by using its first party data? It is okay to create imaginary issues."
     ]
     # Iterate over the question and re-prompt with hallucination
     for question in company_interview:
@@ -81,11 +82,31 @@ def generate_company(industry):
     st.session_state["company_history"] = company_history
 
 
-def generate_code(prompt, result_key):
+def generate_code():
+    code_history = []
+    # Use a copy of the existing messages
     messages = list(st.session_state["company_history"])
-    messages.append(prompt)
+    # Generate CDP API response using prompt template
+    example_profile_prompt = HumanMessagePromptTemplate(
+        prompt=PromptTemplate(
+            template="Create an example {company_name} CDP based user profile in JSON format. Include rollup traits like ltv and cac. It should look like the profiles that Segment returns from it's Profile API. Return only the JSON, no explanations.",
+            input_variables=["company_name"],
+        )
+    )
+    example_profile_prompt_message = example_profile_prompt.format(
+        company_name=st.session_state["company_name"]
+    )
+    messages.append(example_profile_prompt_message)
     ai = chat(messages)
-    st.session_state[result_key] = ai.content
+    code_history.extend([example_profile_prompt_message, ai])
+    messages.append(ai)
+    faker_prompt_message = HumanMessage(
+        content="Based on that JSON example, create a Faker.js function that creates a profile. Return only JavaScript, no explanations"
+    )
+    messages.append(faker_prompt_message)
+    ai = chat(messages)
+    code_history.extend([faker_prompt_message, ai])
+    st.session_state["code_history"] = code_history
 
 
 industry = st.text_input("What industry would you like your fake company generated in?")
@@ -99,45 +120,25 @@ if "company_history" in st.session_state:
             st.markdown(f"#### {message.content}")
         elif isinstance(message, AIMessage):
             st.markdown(message.content)
-    # Generate CDP API response using prompt template
-    example_profile_prompt = HumanMessagePromptTemplate(
-        prompt=PromptTemplate(
-            template="Create an example {company_name} CDP based user profile in JSON format. Include rollup traits like ltv and cac. It should look like the profiles that Segment returns from it's Profile API. Return only the JSON.",
-            input_variables=["company_name"],
-        )
-    )
-    prompt_message = example_profile_prompt.format(
-        company_name=st.session_state["company_name"]
-    )
     st.markdown(
         f"""
     ## Code Generation
 
     What could go wrong? 🙃
 
-    > {prompt_message.content}
-
     """
     )
     st.button(
-        "Generate example profile",
+        "Generate code",
         on_click=generate_code,
-        kwargs={
-            "prompt": prompt_message,
-            "result_key": "example_profile_json",
-        },
     )
 
-    if "example_profile_json" in st.session_state:
-        st.code(st.session_state["example_profile_json"])
-
-        open_api_spec_prompt = HumanMessage(
-            content="Using that example Profile JSON, create an JavaScript that uses a Faker.js script named createProfile. Return only the JavaScript"
-        )
-
-        if "open_api_spec" in st.session_state:
-            print(st.session_state["open_api_spec"])
-            st.code(st.session_state["open_api_spec"])
+    if "code_history" in st.session_state:
+        for message in st.session_state["code_history"]:
+            if isinstance(message, HumanMessage):
+                st.markdown(f"> {message.content}")
+            elif isinstance(message, AIMessage):
+                st.code(message.content)
 
     st.markdown("### The company exported as replayable JSON")
     st.code(json.dumps(messages_to_dict(st.session_state["company_history"]), indent=4))
