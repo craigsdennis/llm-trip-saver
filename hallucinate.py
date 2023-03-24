@@ -34,7 +34,6 @@ for replay to invite others in to the same context.
 
 def load_trip_from_filename(trip_path):
     full_filepath = os.path.join(trip_path, st.session_state["trip_file_name"] + ".json")
-    print(f"File path: {full_filepath}")
     with open(full_filepath) as file:
         json_str = file.read()
     import_json(json.loads(json_str))
@@ -42,8 +41,9 @@ def load_trip_from_filename(trip_path):
 
 with st.form("load_existing"):
     trip_file_name = st.selectbox(
-        "Choose an existing Company Tip",
+        "Choose an existing Company Trip",
         options=get_available_companies(),
+        format_func=lambda x: x.title(),
         key="trip_file_name",
     )
     st.form_submit_button("Load", on_click=load_trip_from_filename, kwargs={
