@@ -4,10 +4,6 @@ This is a [Streamlit](https://streamlit.io) application that uses [langchain](ht
 
 This is handy if you want to force GPT to create something and then play within the world it creates. Causing it to hallucinate is fun...and hallucinating is always better with friends.
 
-I am using this educationally to create scenarios.
-
-This is very much a work in progress.
-
 ## Installation
 
 Requires Python > 3.8 [Install](https://python.org)
@@ -24,7 +20,6 @@ python -m venv venv
 source ./venv/bin/activate
 python -m pip install -r requirements.txt
 ```
-
 
 ## Run the app
 

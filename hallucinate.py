@@ -149,7 +149,7 @@ with st.expander("Additional storage and retrieval options"):
             filepath = os.path.join("trips", "user-submitted", name + ".json")
             with open(filepath, "w") as f:
                 f.write(json.dumps(messages_to_dict(st.session_state["history"])))
-            print(f"Saved? {filepath}")
+            print(f"Saved: {filepath}")
 
     with st.form("import_json_url"):
         json_url = st.text_input("Import from JSON URL", key="json_url")
