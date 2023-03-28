@@ -21,6 +21,7 @@ def get_company_trip(company_name):
 
 company_trip = get_company_trip(company)
 
+# You can append ?_limit=10&_page=2 https://github.com/typicode/json-server#paginate
 profiles_url = f"https://llm-companies.cyclic.app/api/{company}/profiles"
 
 browse_id = st.slider(f"Browse profiles for {company.title()}", max_value=50)

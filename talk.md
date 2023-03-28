@@ -11,7 +11,7 @@
 - [ ] 👷‍♂️ Prompt engineering
 - [ ] 📈 Speaking of context...
 - [ ] Personalization is expected
-  - [ ] 49% repeat visitors / 62% say they will leave
+  - [ ] 49% repeat visitors 📈 / 62% say they will leave 📉
 - [ ] 🥳 First Party Data Party 🎊
 - [ ] 🤔 How do we let y'all play with example first party data?
 - [ ] Demo

@@ -6,7 +6,6 @@ from langchain.schema import HumanMessage, messages_from_dict
 
 
 class CompanyTrip:
-
     def __init__(self, company, messages):
         print(f"Initializing {company} with {len(messages)} messages")
         self.company = company
