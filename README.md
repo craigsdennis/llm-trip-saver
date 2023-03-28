@@ -21,8 +21,19 @@ source ./venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-## Run the app
+## Run the apps
+
+
+### Run existing "trips" or create new ones
 
 ```bash
 streamlit run hallucinate.py
 ```
+
+### Browse profiles from existing companies
+
+```bash
+streamlit run profile-browser.py
+```
+
+This is also available as a [Python Notebook](profile-browser.ipynb)

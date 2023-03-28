@@ -15,6 +15,12 @@ company = st.selectbox(
     key="company",
 )
 
+@st.cache_resource
+def get_company_trip(company_name):
+    return CompanyTrip.from_name(company_name)
+
+company_trip = get_company_trip(company)
+
 profiles_url = f"https://llm-companies.cyclic.app/api/{company}/profiles"
 
 browse_id = st.slider(f"Browse profiles for {company.title()}", max_value=50)
@@ -29,7 +35,6 @@ with st.form("company-prompt"):
     company_prompt = st.text_area(f"This prompt is in context for {company}")
     submitted = st.form_submit_button("Ask")
     if (submitted):
-        company_trip = CompanyTrip.from_name(company)
         answer = company_trip.ask(company_prompt)
         st.markdown(answer)
 
