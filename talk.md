@@ -4,7 +4,7 @@
 - [ ] 🤗🧠 Let's apply some Emotional Intelligence to Artificial Intelligence
 - [ ] LLMs - Large Language Models
   - [ ] 🧱 Generative
-  - [ ] 👨‍🏫 Pre-training (45 TB)
+  - [ ] 👨‍🏫 Pre-trained (45 TB)
   - [ ] ♺ Transformer
 - [ ] 💡 Good example use cases
 - [ ] 🤷‍♂️ And some others...hallucinating?
