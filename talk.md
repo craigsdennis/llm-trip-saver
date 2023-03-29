@@ -9,10 +9,11 @@
 - [ ] 💡 Good example use cases
 - [ ] 🤷‍♂️ And some others...hallucinating?
 - [ ] 👷‍♂️ Prompt engineering
-- [ ] 📈 Speaking of context...
-- [ ] Personalization is expected
-  - [ ] 49% repeat visitors 📈 / 62% say they will leave 📉
+- [ ] 🗣️ Speaking of context... (::)
+- [ ] Personalized Customer Engagement is expected
+  - [ ] 90% increase in revenue 📈 / 66% of consumers say they will leave 📉
 - [ ] 🥳 First Party Data Party 🎊
 - [ ] 🤔 How do we let y'all play with example first party data?
-- [ ] Demo
+- [ ] 👨‍💻 Demo
 - [ ] 🎉 Congratulations
+  - [ ] https://twil.io/llm-trip-saver
