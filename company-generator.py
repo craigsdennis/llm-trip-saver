@@ -1,4 +1,10 @@
+import os
 import json
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 import streamlit as st
 
@@ -7,8 +13,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import (
     AIMessage,
     HumanMessage,
-    SystemMessage,
-    messages_from_dict,
     messages_to_dict,
 )
 from langchain.prompts.chat import (
@@ -20,7 +24,7 @@ from langchain.prompts.chat import (
 
 @st.cache_resource
 def get_chat():
-    return ChatOpenAI(temperature=0.7, max_tokens=500)
+    return ChatOpenAI(model=os.environ["OPENAI_MODEL"], temperature=0.7)
 
 
 chat = get_chat()
@@ -33,9 +37,12 @@ This will cause a company generated planned hallucination by industry.
 """
 
 hallucination_prompt = "You are a creative serial entrepreneur. You have big ideas. You are a fan of technology. Describe your companies with popular buzzwords. When I ask you about your company it is okay to create fake but real sounding information."
+generation_progress = st.progress(0, "Awaiting Input")
 
 
-def generate_company(industry):
+def generate_company(industry=None):
+    if industry is None:
+        industry = st.session_state["industry"]
     company_history = []
     prompts = [
         SystemMessagePromptTemplate.from_template(hallucination_prompt),
@@ -60,10 +67,10 @@ def generate_company(industry):
         "What communication methods does {company_name} use to communicate with it's customers?",
         "What products and/or services does {company_name} offer?",
         "What sort of customer events would {company_name} track in their CDP?",
-        "What problems is {company_name} trying to solve by using its first party data? It is okay to create imaginary issues."
+        "What problems is {company_name} trying to solve by using its first party data? It is okay to create imaginary issues.",
     ]
     # Iterate over the question and re-prompt with hallucination
-    for question in company_interview:
+    for index, question in enumerate(company_interview):
         prompt = HumanMessagePromptTemplate(
             prompt=PromptTemplate(
                 input_variables=["company_name"],
@@ -76,10 +83,14 @@ def generate_company(industry):
         chat_prompt = ChatPromptTemplate.from_messages(prompts)
         messages = chat_prompt.format_prompt(company_name=company_name).to_messages()
         current_question = messages[-1]
+        generation_progress.progress(
+            index / len(company_interview), f"Prompting: {current_question.content}"
+        )
         ai = chat(messages)
         company_history.append(current_question)
         company_history.append(ai)
     st.session_state["company_history"] = company_history
+    return company_history
 
 
 def generate_code():
@@ -109,10 +120,14 @@ def generate_code():
     st.session_state["code_history"] = code_history
 
 
-industry = st.text_input("What industry would you like your fake company generated in?")
-st.button("Generate", on_click=generate_company, args=(industry,))
-
-st.markdown(f"> {hallucination_prompt}")
+with st.form("industry-form"):
+    industry = st.text_input(
+        "What industry would you like your fake company generated in?", key="industry"
+    )
+    submitted = st.form_submit_button("Generate", on_click=generate_company)
+    st.markdown(f"> {hallucination_prompt}")
+    if submitted:
+        generation_progress.empty()
 
 if "company_history" in st.session_state:
     for message in st.session_state["company_history"]:

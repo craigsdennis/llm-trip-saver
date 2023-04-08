@@ -10,7 +10,11 @@ class CompanyTrip:
         print(f"Initializing {company} with {len(messages)} messages")
         self.company = company
         self.messages = messages
-        self.chat = ChatOpenAI(temperature=0.7, max_tokens=500)
+        self.chat = ChatOpenAI(
+            model=os.environ["OPENAI_MODEL"],
+            temperature=0.7, 
+            max_tokens=500
+        )
 
     @classmethod
     def from_name(cls, name):

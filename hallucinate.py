@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 import json
 import os
 import requests
@@ -15,12 +18,14 @@ from langchain.schema import (
 
 @st.cache_resource
 def get_chat():
-    return ChatOpenAI(temperature=0.7, max_tokens=500)
+    return ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7, max_tokens=None)
+
 
 @st.cache_data
 def get_available_companies():
     filenames = os.listdir(os.path.join("trips", "companies"))
     return sorted([file.split(".")[0] for file in filenames])
+
 
 chat = get_chat()
 
@@ -33,7 +38,9 @@ for replay to invite others in to the same context.
 
 
 def load_trip_from_filename(trip_path):
-    full_filepath = os.path.join(trip_path, st.session_state["trip_file_name"] + ".json")
+    full_filepath = os.path.join(
+        trip_path, st.session_state["trip_file_name"] + ".json"
+    )
     with open(full_filepath) as file:
         json_str = file.read()
     import_json(json.loads(json_str))
@@ -46,9 +53,11 @@ with st.form("load_existing"):
         format_func=lambda x: x.title(),
         key="trip_file_name",
     )
-    st.form_submit_button("Load", on_click=load_trip_from_filename, kwargs={
-        "trip_path": os.path.join("trips", "companies")
-        })
+    st.form_submit_button(
+        "Load",
+        on_click=load_trip_from_filename,
+        kwargs={"trip_path": os.path.join("trips", "companies")},
+    )
 
 
 """
@@ -108,6 +117,7 @@ if st.session_state["history"]:
         f"**Number of Tokens used in current conversation**: {number_of_tokens}"
     )
 
+
 def submit_chat():
     messages = st.session_state["history"]
     if not messages:
@@ -140,6 +150,7 @@ def import_json_url():
     response = requests.get(url)
     json = response.json()
     return import_json(json)
+
 
 with st.expander("Additional storage and retrieval options"):
     with st.form("save_trip"):
