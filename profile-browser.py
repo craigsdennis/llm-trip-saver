@@ -6,7 +6,7 @@ import json
 import os
 
 from langchain.agents import create_pandas_dataframe_agent
-from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 import pandas as pd
 import requests
 import streamlit as st
@@ -53,7 +53,7 @@ if company == "shadazzle":
     reviews_df = pd.read_json(os.path.join("trips", "data", "shadazzle-reviews.json"))
 
     # If you just return a string it will assume markdown
-    "## First 5 reviews"
+    f"## First 5 of {len(reviews_df)} reviews"
     # If you return a Pandas dataframe it will just render
     reviews_df[:5]
 
@@ -61,7 +61,7 @@ if company == "shadazzle":
     def get_reviews_agent():
         # OpenAI is using the
         return create_pandas_dataframe_agent(
-            OpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0),
+            ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0),
             reviews_df,
             verbose=True,
         )
