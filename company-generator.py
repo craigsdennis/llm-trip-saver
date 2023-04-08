@@ -24,7 +24,7 @@ from langchain.prompts.chat import (
 
 @st.cache_resource
 def get_chat():
-    return ChatOpenAI(model=os.environ["OPENAI_MODEL"], temperature=0.7)
+    return ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0.7)
 
 
 chat = get_chat()

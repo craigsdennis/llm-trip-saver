@@ -61,7 +61,7 @@ if company == "shadazzle":
     def get_reviews_agent():
         # OpenAI is using the
         return create_pandas_dataframe_agent(
-            OpenAI(model=os.environ["OPENAI_MODEL"], temperature=0),
+            OpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0),
             reviews_df,
             verbose=True,
         )

@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+
 load_dotenv()
 
 import json
@@ -18,7 +19,7 @@ from langchain.schema import (
 
 @st.cache_resource
 def get_chat():
-    return ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7, max_tokens=None)
+    return ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0.7, max_tokens=None)
 
 
 @st.cache_data

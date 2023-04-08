@@ -11,7 +11,7 @@ class CompanyTrip:
         self.company = company
         self.messages = messages
         self.chat = ChatOpenAI(
-            model=os.environ["OPENAI_MODEL"],
+            model_name=os.environ["OPENAI_MODEL"],
             temperature=0.7, 
             max_tokens=500
         )
