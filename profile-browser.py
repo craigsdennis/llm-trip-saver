@@ -6,12 +6,14 @@ import json
 import os
 
 from langchain.agents import create_pandas_dataframe_agent
+from langchain.chains import APIChain
 from langchain.chat_models import ChatOpenAI
 import pandas as pd
 import requests
 import streamlit as st
 
 from utils import CompanyTrip
+from trips.data.profiles_api_docs import get_profile_api_docs
 
 COMPANIES = ("shadazzle", "fitlyfe", "socimind")
 
@@ -49,6 +51,16 @@ with st.form("company-prompt"):
         answer = company_trip.ask(company_prompt)
         st.markdown(answer)
 
+with st.form("profiles-api"):
+    profiles_prompt = st.text_area(f"What would you like to ask the profiles API?")
+    submitted = st.form_submit_button("Use API")
+    if submitted:
+        docs = get_profile_api_docs(company)
+        llm = ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0)
+        api_chain = APIChain.from_llm_and_api_docs(llm, docs, verbose=True)
+        result = api_chain.run(profiles_prompt)
+        st.markdown(result)
+
 if company == "shadazzle":
     reviews_df = pd.read_json(os.path.join("trips", "data", "shadazzle-reviews.json"))
 
@@ -66,7 +78,7 @@ if company == "shadazzle":
             verbose=True,
         )
 
-    agent = get_reviews_agent()
+    reviews_agent = get_reviews_agent()
 
     with st.form("query_reviews"):
         reviews_query = st.text_area(
@@ -74,5 +86,5 @@ if company == "shadazzle":
         )
         submitted = st.form_submit_button("Ask")
         if submitted:
-            response = agent.run(reviews_query)
+            response = reviews_agent.run(reviews_query)
             st.markdown(response)
