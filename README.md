@@ -29,10 +29,10 @@ python -m pip install -r requirements.txt
 streamlit run hallucinate.py
 ```
 
-### Browse profiles from existing companies
+### Explore some solutions
 
 ```bash
-streamlit run profile-browser.py
+streamlit run playground.py
 ```
 
 This is also available as a [Python Notebook](profile-browser.ipynb)
