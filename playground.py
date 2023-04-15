@@ -79,14 +79,15 @@ with st.form("profiles-api"):
         llm = ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0)
         api_chain = APIChain.from_llm_and_api_docs(llm, docs, verbose=True)
         result = api_chain.run(profiles_prompt)
-        st.markdown(result)
+        st.write(result)
 
 if company == "shadazzle":
 
     """## Experimenting with other data
     
-    This is using LangChain's [pandas DataFrame Agent](https://python.langchain.com/en/latest/modules/agents/toolkits/examples/pandas.html)
-    """
+This is using LangChain's [pandas DataFrame Agent](https://python.langchain.com/en/latest/modules/agents/toolkits/examples/pandas.html)
+    
+"""
 
     reviews_df = pd.read_json(os.path.join("trips", "data", "shadazzle-reviews.json"))
 
@@ -113,4 +114,4 @@ if company == "shadazzle":
         submitted = st.form_submit_button("Ask")
         if submitted:
             response = reviews_agent.run(reviews_query)
-            st.markdown(response)
+            st.write(response)
