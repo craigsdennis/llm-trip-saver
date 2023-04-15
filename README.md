@@ -12,10 +12,7 @@ You're going to need an [OpenAI API Key](https://platform.openai.com/account/api
 
 If you are at an event, we'll share the key with you.
 
-```bash
-# Your key goes in the quotes
-export OPENAI_API_KEY="..."
-```
+Copy `.env.example` to `.env` and update with the key.
 
 ```bash
 python -m venv venv
@@ -32,10 +29,10 @@ python -m pip install -r requirements.txt
 streamlit run hallucinate.py
 ```
 
-### Browse profiles from existing companies
+### Explore some solutions
 
 ```bash
-streamlit run profile-browser.py
+streamlit run playground.py
 ```
 
 This is also available as a [Python Notebook](profile-browser.ipynb)

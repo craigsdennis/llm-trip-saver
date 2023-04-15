@@ -1,0 +1,601 @@
+[
+  {
+    "user_id": 486,
+    "product_id": "SunSync",
+    "rating": 5,
+    "review_text": "I love these sunglasses! They're so stylish and the Bluetooth feature is a game-changer. I wear them everywhere!"
+  },
+  {
+    "user_id": 782,
+    "product_id": "ChromaShades",
+    "rating": 4,
+    "review_text": "The color-changing lenses on these sunglasses are so cool! I get compliments on them all the time. The only downside is that they're a bit expensive."
+  },
+  {
+    "user_id": 301,
+    "product_id": "BeatShades",
+    "rating": 3,
+    "review_text": "The sound quality on these sunglasses is good, but the speakers are a bit bulky and uncomfortable to wear for long periods of time."
+  },
+  {
+    "user_id": 874,
+    "product_id": "HoloShades",
+    "rating": 5,
+    "review_text": "These sunglasses are the coolest thing I've ever seen! The holographic lenses are so unique and eye-catching. They're definitely worth the price."
+  },
+  {
+    "user_id": 567,
+    "product_id": "EcoShades",
+    "rating": 4,
+    "review_text": "I appreciate the eco-friendly materials used to make these sunglasses. They're comfortable and stylish, but the lenses scratch easily."
+  },
+  {
+    "user_id": 142,
+    "product_id": "ZoomShades",
+    "rating": 2,
+    "review_text": "The zoom feature on these sunglasses is a bit gimmicky. I don't find myself using it very often, and the glasses are a bit heavy."
+  },
+  {
+    "user_id": 915,
+    "product_id": "MoodShades",
+    "rating": 5,
+    "review_text": "These sunglasses are so much fun! I love watching the lenses change color to match my mood. They fit well and are very comfortable."
+  },
+  {
+    "user_id": 32,
+    "product_id": "LightShades",
+    "rating": 3,
+    "review_text": "The LED lights on these sunglasses are a bit bright for my taste, but they are useful for nighttime activities. They're a bit heavy and bulky, though."
+  },
+
+  {
+    "user_id": 238,
+    "product_id": "SunSync",
+    "rating": 4,
+    "review_text": "These sunglasses are great for outdoor activities. They provide good protection from the sun and look stylish too."
+  },
+  {
+    "user_id": 705,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "I'm in love with these sunglasses! The color-changing lenses are so unique and the frames are very comfortable."
+  },
+  {
+    "user_id": 417,
+    "product_id": "BeatShades",
+    "rating": 3,
+    "review_text": "The sound quality on these sunglasses is decent, but I wish they were a bit more stylish."
+  },
+  {
+    "user_id": 889,
+    "product_id": "HoloShades",
+    "rating": 5,
+    "review_text": "I've never seen sunglasses like these before! The holographic lenses are amazing and the frames are very comfortable."
+  },
+  {
+    "user_id": 601,
+    "product_id": "EcoShades",
+    "rating": 4,
+    "review_text": "I'm happy to support an eco-friendly brand like Shadazzle. These sunglasses are well-made and look great."
+  },
+  {
+    "user_id": 276,
+    "product_id": "ZoomShades",
+    "rating": 2,
+    "review_text": "I don't really see the point of the zoom feature on these sunglasses. They're also a bit heavy and uncomfortable to wear."
+  },
+  {
+    "user_id": 927,
+    "product_id": "MoodShades",
+    "rating": 5,
+    "review_text": "These sunglasses are so fun! I love watching the lenses change color based on my mood. They're also very comfortable."
+  },
+  {
+    "user_id": 65,
+    "product_id": "LightShades",
+    "rating": 3,
+    "review_text": "The LED lights on these sunglasses are a bit bright for my taste, but they do come in handy when I'm walking my dog at night."
+  },
+  {
+    "user_id": 426,
+    "product_id": "SunSync",
+    "rating": 5,
+    "review_text": "These are hands down the best sunglasses I've ever owned. The Bluetooth feature is so convenient and the frames fit perfectly."
+  },
+  {
+    "user_id": 108,
+    "product_id": "ChromaShades",
+    "rating": 4,
+    "review_text": "I get so many compliments on these sunglasses! The color-changing lenses are a fun conversation starter."
+  },
+  {
+    "user_id": 786,
+    "product_id": "BeatShades",
+    "rating": 2,
+    "review_text": "The sound quality on these sunglasses is pretty bad. I wouldn't recommend them."
+  },
+  {
+    "user_id": 395,
+    "product_id": "HoloShades",
+    "rating": 5,
+    "review_text": "These sunglasses are so cool! The holographic lenses are really trippy and I love the way they look."
+  },
+  {
+    "user_id": 721,
+    "product_id": "EcoShades",
+    "rating": 4,
+    "review_text": "I appreciate the effort to make these sunglasses eco-friendly. They're also very comfortable and fit well."
+  },
+  {
+    "user_id": 832,
+    "product_id": "ZoomShades",
+    "rating": 3,
+    "review_text": "The zoom feature on these sunglasses is a bit gimmicky, but they do look stylish."
+  },
+  {
+    "user_id": 503,
+    "product_id": "MoodShades",
+    "rating": 5,
+    "review_text": "I'm obsessed with these sunglasses! The lenses change color so quickly and accurately, and the frames are very comfortable."
+  },
+  {
+    "user_id": 924,
+    "product_id": "LightShades",
+    "rating": 3,
+    "review_text": "The LED lights on these sunglasses are a bit too bright for my taste, but they do work well for nighttime activities."
+  },
+  {
+    "user_id": 187,
+    "product_id": "SunSync",
+    "rating": 4,
+    "review_text": "I really like these sunglasses. The Bluetooth feature makes them so convenient, and they look great too."
+  },
+  {
+    "user_id": 661,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "These sunglasses are amazing! The color-changing lenses are so cool and they fit perfectly."
+  },
+  {
+    "user_id": 332,
+    "product_id": "BeatShades",
+    "rating": 3,
+    "review_text": "The sound quality on these sunglasses is decent, but they're not the most comfortable to wear."
+  },
+  {
+    "user_id": 779,
+    "product_id": "HoloShades",
+    "rating": 5,
+    "review_text": "I get so many compliments on these sunglasses! The holographic lenses are so unique and the frames are very comfortable."
+  },
+  {
+    "user_id": 552,
+    "product_id": "EcoShades",
+    "rating": 4,
+    "review_text": "I love the eco-friendly aspect of these sunglasses. They're also very stylish and comfortable."
+  },
+  {
+    "user_id": 983,
+    "product_id": "ZoomShades",
+    "rating": 2,
+    "review_text": "I don't really see the point of the zoom feature on these sunglasses. They're also a bit heavy and uncomfortable to wear."
+  },
+  {
+    "user_id": 261,
+    "product_id": "MoodShades",
+    "rating": 5,
+    "review_text": "These sunglasses are so much fun! The lenses change color quickly and accurately, and they're very comfortable to wear."
+  },
+  {
+    "user_id": 38,
+    "product_id": "LightShades",
+    "rating": 3,
+    "review_text": "The LED lights on these sunglasses are a bit too bright for my taste, but they do work well for nighttime activities."
+  },
+  {
+    "user_id": 835,
+    "product_id": "SunSync",
+    "rating": 5,
+    "review_text": "These are by far the best sunglasses I've ever owned. The Bluetooth feature is so convenient and they're very comfortable to wear."
+  },
+  {
+    "user_id": 117,
+    "product_id": "ChromaShades",
+    "rating": 4,
+    "review_text": "I really like the color-changing lenses on these sunglasses. They're a bit expensive, but worth it."
+  },
+  {
+    "user_id": 695,
+    "product_id": "BeatShades",
+    "rating": 2,
+    "review_text": "I was really disappointed with the sound quality on these sunglasses. They're also not very comfortable to wear."
+  },
+  {
+    "user_id": 420,
+    "product_id": "HoloShades",
+    "rating": 5,
+    "review_text": "These sunglasses are so unique and stylish! The holographic lenses are amazing and they fit perfectly."
+  },
+  {
+    "user_id": 773,
+    "product_id": "EcoShades",
+    "rating": 4,
+    "review_text": "I'm glad to see a brand making an effort to be eco-friendly. These sunglasses are also very comfortable and stylish."
+  },
+  {
+    "user_id": 286,
+    "product_id": "ZoomShades",
+    "rating": 3,
+    "review_text": "The zoom feature on these sunglasses is a bit gimmicky, but they do look cool."
+  },
+  {
+    "user_id": 949,
+    "product_id": "MoodShades",
+    "rating": 5,
+    "review_text": "These sunglasses are so much fun! They change color quickly and accurately, and the frames are very comfortable."
+  },
+  {
+    "user_id": 72,
+    "product_id": "LightShades",
+    "rating": 3,
+    "review_text": "The LED lights on these sunglasses are a bit too bright for my taste, but they do work well for nighttime activities."
+  },
+  {
+    "user_id": 267,
+    "product_id": "SunSync",
+    "rating": 4,
+    "review_text": "I love my SunSync sunglasses! The customization options are great and they work really well with my phone."
+  },
+  {
+    "user_id": 912,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "These ChromaShades are amazing! The color-changing lenses are so cool and they fit perfectly."
+  },
+  {
+    "user_id": 498,
+    "product_id": "BeatShades",
+    "rating": 4,
+    "review_text": "The speakers on these BeatShades are surprisingly good! The only downside is that they can be a bit heavy."
+  },
+  {
+    "user_id": 764,
+    "product_id": "HoloShades",
+    "rating": 5,
+    "review_text": "I get so many compliments on my HoloShades. The holographic lenses really stand out and they're comfortable to wear all day."
+  },
+  {
+    "user_id": 123,
+    "product_id": "EcoShades",
+    "rating": 4,
+    "review_text": "I appreciate that these EcoShades are made from sustainable materials, and they look great too!"
+  },
+  {
+    "user_id": 876,
+    "product_id": "ZoomShades",
+    "rating": 3,
+    "review_text": "The zoom lenses on these ZoomShades are cool, but they can be a bit disorienting when you first use them."
+  },
+  {
+    "user_id": 452,
+    "product_id": "MoodShades",
+    "rating": 5,
+    "review_text": "I'm obsessed with my MoodShades! The color-changing effect is really fun and they're comfortable to wear all day."
+  },
+  {
+    "user_id": 654,
+    "product_id": "LightShades",
+    "rating": 4,
+    "review_text": "The LED lights on these LightShades are really useful when you're out at night. The only downside is that they can be a bit heavy."
+  },
+  {
+    "user_id": 189,
+    "product_id": "SunSync",
+    "rating": 5,
+    "review_text": "These SunSync sunglasses are worth every penny! They look great and the Bluetooth technology works really well."
+  },
+  {
+    "user_id": 875,
+    "product_id": "ChromaShades",
+    "rating": 4,
+    "review_text": "I love the color-changing lenses on these ChromaShades, but they can be a bit difficult to clean."
+  },
+  {
+    "user_id": 312,
+    "product_id": "BeatShades",
+    "rating": 5,
+    "review_text": "I'm blown away by the sound quality on these BeatShades. They're also really stylish and comfortable to wear."
+  },
+  {
+    "user_id": 567,
+    "product_id": "HoloShades",
+    "rating": 4,
+    "review_text": "The holographic lenses on these HoloShades are really cool, but they can be a bit distracting when you're driving."
+  },
+  {
+    "user_id": 823,
+    "product_id": "EcoShades",
+    "rating": 3,
+    "review_text": "I appreciate the sustainable materials used in these EcoShades, but they don't fit as well as I'd like."
+  },
+  {
+    "user_id": 456,
+    "product_id": "ZoomShades",
+    "rating": 5,
+    "review_text": "These ZoomShades are so cool! The zoom lenses work really well and they're comfortable to wear all day."
+  },
+  {
+    "user_id": 109,
+    "product_id": "MoodShades",
+    "rating": 4,
+    "review_text": "The color-changing effect on these MoodShades is really fun, but it can be a bit slow to change sometimes."
+  },
+  {
+    "user_id": 789,
+    "product_id": "LightShades",
+    "rating": 5,
+    "review_text": "I love the LED lights on these LightShades. They're really bright and they work well for nighttime activities."
+  },
+  {
+    "user_id": 234,
+    "product_id": "SunSync",
+    "rating": 3,
+    "review_text": "The Bluetooth technology on these SunSync sunglasses is great, but they're a bit heavy for my liking."
+  },
+  {
+    "user_id": 678,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "These ChromaShades are amazing! The color-changing effect is really striking and they fit perfectly."
+  },
+  {
+    "user_id": 901,
+    "product_id": "BeatShades",
+    "rating": 4,
+    "review_text": "The speakers on these BeatShades are really impressive, but they can be a bit uncomfortable to wear for long periods."
+  },
+  {
+    "user_id": 432,
+    "product_id": "HoloShades",
+    "rating": 5,
+    "review_text": "These HoloShades are so unique and stylish. I've gotten so many compliments on them!"
+  },
+  {
+    "user_id": 567,
+    "product_id": "EcoShades",
+    "rating": 5,
+    "review_text": "I love that these EcoShades are made from sustainable materials. They're also really comfortable and stylish!"
+  },
+  {
+    "user_id": 234,
+    "product_id": "ZoomShades",
+    "rating": 4,
+    "review_text": "The zoom lenses on these ZoomShades are really cool, but they take some getting used to."
+  },
+  {
+    "user_id": 901,
+    "product_id": "MoodShades",
+    "rating": 5,
+    "review_text": "These MoodShades are so much fun! I love the color-changing effect and they fit really well."
+  },
+  {
+    "user_id": 432,
+    "product_id": "LightShades",
+    "rating": 4,
+    "review_text": "The LED lights on these LightShades are really useful, but they can be a bit bright in some situations."
+  },
+  {
+    "user_id": 312,
+    "product_id": "SunSync",
+    "rating": 5,
+    "review_text": "These SunSync sunglasses are amazing! The customization options are great and the Bluetooth technology works really well."
+  },
+  {
+    "user_id": 456,
+    "product_id": "ChromaShades",
+    "rating": 3,
+    "review_text": "The color-changing effect on these ChromaShades is cool, but it can be a bit subtle sometimes."
+  },
+  {
+    "user_id": 789,
+    "product_id": "BeatShades",
+    "rating": 5,
+    "review_text": "I'm blown away by the sound quality on these BeatShades. They're also really comfortable and stylish!"
+  },
+  {
+    "user_id": 109,
+    "product_id": "HoloShades",
+    "rating": 4,
+    "review_text": "The holographic lenses on these HoloShades are really cool, but they can be a bit reflective in certain lighting conditions."
+  },
+  {
+    "user_id": 876,
+    "product_id": "EcoShades",
+    "rating": 5,
+    "review_text": "These EcoShades are so comfortable and stylish. I love that they're made from sustainable materials!"
+  },
+  {
+    "user_id": 823,
+    "product_id": "ZoomShades",
+    "rating": 4,
+    "review_text": "The zoom lenses on these ZoomShades are really fun to play with, but they can be a bit disorienting at first."
+  },
+
+  {
+    "user_id": 901,
+    "product_id": "MoodShades",
+    "rating": 3,
+    "review_text": "The color-changing effect on these MoodShades is cool, but it can be a bit slow to change sometimes."
+  },
+  {
+    "user_id": 456,
+    "product_id": "LightShades",
+    "rating": 5,
+    "review_text": "These LightShades are amazing! The LED lights are really bright and they fit perfectly."
+  },
+  {
+    "user_id": 567,
+    "product_id": "SunSync",
+    "rating": 4,
+    "review_text": "I love the customization options on these SunSync sunglasses, but they can be a bit heavy."
+  },
+  {
+    "user_id": 234,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "These ChromaShades are so stylish and unique! The color-changing effect is really striking."
+  },
+  {
+    "user_id": 312,
+    "product_id": "BeatShades",
+    "rating": 3,
+    "review_text": "The sound quality on these BeatShades is good, but they can be a bit heavy and uncomfortable to wear for long periods."
+  },
+  {
+    "user_id": 432,
+    "product_id": "HoloShades",
+    "rating": 5,
+    "review_text": "These HoloShades are so cool! The holographic lenses really stand out and they're comfortable to wear all day."
+  },
+  {
+    "user_id": 567,
+    "product_id": "EcoShades",
+    "rating": 4,
+    "review_text": "I like that these EcoShades are made from sustainable materials, but they can be a bit tight on my head."
+  },
+  {
+    "user_id": 109,
+    "product_id": "ZoomShades",
+    "rating": 4,
+    "review_text": "The zoom lenses on these ZoomShades are really fun to play with, but they can be a bit bulky."
+  },
+  {
+    "user_id": 189,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "The ChromaShades are so cool! The lenses change color in the sunlight and look amazing. I've gotten tons of compliments on them and they're worth every penny."
+  },
+  {
+    "user_id": 462,
+    "product_id": "ChromaShades",
+    "rating": 4,
+    "review_text": "Love these sunglasses! They're super stylish and the color-changing lenses are great for outdoor activities. They are a bit pricey, but I feel like they're worth it for the quality."
+  },
+  {
+    "user_id": 736,
+    "product_id": "ChromaShades",
+    "rating": 3,
+    "review_text": "The color-changing feature on these sunglasses is really cool, but I wish the frames were more comfortable. They tend to squeeze my head a bit too tightly."
+  },
+  {
+    "user_id": 31,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "I can't get enough of these sunglasses! The color-changing lenses make them stand out from the crowd, and they're super stylish to boot. Highly recommend!"
+  },
+  {
+    "user_id": 874,
+    "product_id": "ChromaShades",
+    "rating": 4,
+    "review_text": "Overall, I'm really happy with my purchase of the ChromaShades. The lenses are unique and cool, and they fit well on my face. The only downside is the price - they are a bit expensive."
+  },
+  {
+    "user_id": 583,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "These sunglasses are amazing! I love how the lenses are transparent indoors but change color outdoors. They are expensive, but worth it for the quality and unique feature."
+  },
+  {
+    "user_id": 205,
+    "product_id": "ChromaShades",
+    "rating": 3,
+    "review_text": "The ChromaShades are an okay product. I like the idea of the color-changing lenses, but the frames feel a bit cheap for the price. It's an interesting product, but not my favorite."
+  },
+  {
+    "user_id": 968,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "I highly recommend the ChromaShades - they are the perfect combination of style and technology. The color-changing lenses are so unique and fun, and I always get compliments on them!"
+  },
+  {
+    "user_id": 442,
+    "product_id": "ChromaShades",
+    "rating": 5,
+    "review_text": "Love these sunglasses! The color-changing lenses are perfect for outdoor events and festivals, and they're super comfortable to wear. Highly recommend for anyone looking for a fun and unique accessory."
+  },
+  {
+    "user_id": 788,
+    "product_id": "ChromaShades",
+    "rating": 4,
+    "review_text": "The ChromaShades are an awesome product. The color-changing lenses are really cool, and they are very comfortable to wear. They are a bit expensive, but the quality is worth it."
+  },
+  {
+    "user_id": 52,
+    "product_id": "SunSync",
+    "rating": 5,
+    "review_text": "I love my SunSync sunglasses! The Bluetooth feature works perfectly and the customizable frames make them totally unique. Plus, they protect my eyes from the sun!"
+  },
+
+  {
+    "user_id": 648,
+    "product_id": "BeatShades",
+    "rating": 4,
+    "review_text": "The speakers on these sunglasses are pretty impressive! They deliver great sound quality and the sunglasses fit comfortably. The only downside is the high price."
+  },
+
+  {
+    "user_id": 287,
+    "product_id": "Holoshades",
+    "rating": 3,
+    "review_text": "I bought the HoloShades because I was intrigued by the holographic lenses, but they are a bit too flashy for me. The sunglasses are well-made and fit well, but I wish I had gone with a more understated style."
+  },
+
+  {
+    "user_id": 654,
+    "product_id": "EcoShades",
+    "rating": 5,
+    "review_text": "I'm so glad I chose EcoShades - they are super stylish and made from sustainable materials, which is important to me. They fit well and are very comfortable to wear, too."
+  },
+
+  {
+    "user_id": 173,
+    "product_id": "ZoomShades",
+    "rating": 4,
+    "review_text": "These are great for outdoor activities! The zoom lenses allow me to get a closer look at things like birds and scenery. The only downside is they can be a bit bulky."
+  },
+
+  {
+    "user_id": 546,
+    "product_id": "MoodShades",
+    "rating": 5,
+    "review_text": "I'm obsessed with MoodShades! They change color based on my mood, which always gets a reaction from my friends. They're also very comfortable and lightweight to wear."
+  },
+
+  {
+    "user_id": 257,
+    "product_id": "LightShades",
+    "rating": 4,
+    "review_text": "The LED lights on these sunglasses are really useful, especially when I'm walking my dog at night. They're also comfortable and the lenses provide good UV protection. The battery life could be better, though."
+  },
+
+  {
+    "user_id": 791,
+    "product_id": "SunSync",
+    "rating": 3,
+    "review_text": "The SunSync sunglasses are great for my outdoor activities, but I find the Bluetooth feature a bit finicky. Sometimes it disconnects unexpectedly."
+  },
+
+  {
+    "user_id": 96,
+    "product_id": "ZoomShades",
+    "rating": 5,
+    "review_text": "I love my ZoomShades - they allow me to see things I normally wouldn't be able to. They look stylish and fit well, too. Highly recommend for anyone who loves the outdoors!"
+  },
+
+  {
+    "user_id": 366,
+    "product_id": "ChromaShades",
+    "rating": 4,
+    "review_text": "These sunglasses are so fun! The color-changing lenses are a cool feature and they fit well on my face. They are a bit pricey, but worth it for the unique look."
+  }
+]
