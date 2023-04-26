@@ -12,8 +12,8 @@ import pandas as pd
 import requests
 import streamlit as st
 
-from utils import CompanyTrip
-from trips.data.profiles_api_docs import get_profile_api_docs
+from utils.trips import CompanyTrip
+
 
 COMPANIES = ("shadazzle", "fitlyfe", "socimind")
 
