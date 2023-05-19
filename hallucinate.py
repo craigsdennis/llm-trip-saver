@@ -127,7 +127,6 @@ def submit_chat():
     if not messages:
         messages.append(SystemMessage(content=system_prompter))
     messages.append(HumanMessage(content=st.session_state.chat_prompter))
-    print(f"Messages: {messages}")
     ai_message = chat(messages)
     ai_message = convert_message_if_needed(ai_message, AIMessage)
     messages.append(ai_message)
