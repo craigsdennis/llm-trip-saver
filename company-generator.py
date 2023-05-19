@@ -9,7 +9,7 @@ load_dotenv()
 import streamlit as st
 
 from langchain import PromptTemplate
-from langchain.chat_models import ChatOpenAI
+from langchain.chat_models import ChatGooglePalm
 from langchain.schema import (
     AIMessage,
     HumanMessage,
@@ -21,10 +21,12 @@ from langchain.prompts.chat import (
     HumanMessagePromptTemplate,
 )
 
+from utils.google_palm_tools import convert_message_if_needed
+
 
 @st.cache_resource
 def get_chat():
-    return ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0.7)
+    return ChatGooglePalm(temperature=0.7)
 
 
 chat = get_chat()
@@ -56,6 +58,7 @@ def generate_company(industry=None):
     chat_prompt = ChatPromptTemplate.from_messages(prompts)
     messages = chat_prompt.format_prompt(industry=industry).to_messages()
     ai = chat(messages)
+    ai = convert_message_if_needed(ai, AIMessage)
     company_history.extend(messages)
     company_history.append(ai)
     company_name = ai.content
@@ -86,9 +89,10 @@ def generate_company(industry=None):
         generation_progress.progress(
             index / len(company_interview), f"Prompting: {current_question.content}"
         )
-        ai = chat(messages)
         company_history.append(current_question)
-        company_history.append(ai)
+        ai_message = chat(messages)
+        ai_message = convert_message_if_needed(ai_message, AIMessage)
+        company_history.append(ai_message)
     st.session_state["company_history"] = company_history
     return company_history
 
@@ -108,15 +112,19 @@ def generate_code():
         company_name=st.session_state["company_name"]
     )
     messages.append(example_profile_prompt_message)
-    ai = chat(messages)
-    code_history.extend([example_profile_prompt_message, ai])
-    messages.append(ai)
+    print(f"Human", example_profile_prompt)
+    ai_message = chat(messages)
+    ai_message = convert_message_if_needed(ai_message, AIMessage)
+    code_history.extend([example_profile_prompt_message, ai_message])
+    messages.append(ai_message)
     faker_prompt_message = HumanMessage(
         content="Based on that JSON example, create a Faker.js function that creates a profile. Return only JavaScript, no explanations"
     )
     messages.append(faker_prompt_message)
-    ai = chat(messages)
-    code_history.extend([faker_prompt_message, ai])
+    ai_message = chat(messages)
+    ai_message = convert_message_if_needed(ai_message, AIMessage)
+
+    code_history.extend([faker_prompt_message, ai_message])
     st.session_state["code_history"] = code_history
 
 
