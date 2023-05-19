@@ -7,7 +7,8 @@ import os
 
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.chains import APIChain
-from langchain.chat_models import ChatOpenAI
+from langchain.chat_models import ChatGooglePalm
+from langchain.llms import GooglePalm
 import pandas as pd
 import requests
 import streamlit as st
@@ -37,7 +38,7 @@ company = st.selectbox(
 def get_company_trip(company_name):
     return CompanyTrip.from_name(company_name)
 
-# I've abstracted out the ChatGPT conversation that created the company
+# I've abstracted out the LLM conversation that created the company
 # You can use this object to ask a question to the model it's in [utils/trips](./utils/trips.py)
 company_trip = get_company_trip(company)
 
@@ -93,7 +94,7 @@ with st.form("profiles-api"):
     submitted = st.form_submit_button("Use API")
     if submitted:
         docs = metadata["docs"]
-        llm = ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0)
+        llm = GooglePalm(temperature=0)
         # This is in the notes above that are rendered to the screen
         api_chain = APIChain.from_llm_and_api_docs(llm, docs, verbose=True)
         result = api_chain.run(profiles_prompt)
@@ -123,7 +124,7 @@ This is using LangChain's [pandas DataFrame Agent](https://python.langchain.com/
         # Create a LangChain agent that can query the dataframe using 
         # OpenAI
         return create_pandas_dataframe_agent(
-            ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0),
+            GooglePalm(temperature=0),
             reviews_df,
             verbose=True,
         )
