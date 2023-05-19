@@ -1,7 +1,9 @@
 langchain==0.0.173
 python-dotenv
+google-generativeai
 google-ai-generativelanguage
 jupyter
 SQLAlchemy
 streamlit
 transformers
+torch
