@@ -1,4 +1,5 @@
 langchain==0.0.173
+python-dotenv
 google-ai-generativelanguage
 jupyter
 SQLAlchemy
