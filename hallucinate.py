@@ -127,7 +127,10 @@ def submit_chat():
     if not messages:
         messages.append(SystemMessage(content=system_prompter))
     messages.append(HumanMessage(content=st.session_state.chat_prompter))
-    ai_message = chat(messages)
+    try:
+        ai_message = chat(messages)
+    except Exception as ex:
+        ai_message = AIMessage(content=f"Hmmm...something went wrong. Try again with a different prompt. {ex}")
     ai_message = convert_message_if_needed(ai_message, AIMessage)
     messages.append(ai_message)
     st.session_state["history"] = messages

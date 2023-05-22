@@ -1,5 +1,6 @@
 import os
 import json
+from string import punctuation
 
 from dotenv import load_dotenv
 
@@ -61,7 +62,7 @@ def generate_company(industry=None):
     ai = convert_message_if_needed(ai, AIMessage)
     company_history.extend(messages)
     company_history.append(ai)
-    company_name = ai.content
+    company_name = ai.content.rstrip(punctuation)
     st.session_state["company_name"] = company_name
     company_interview = [
         "What is the elevator pitch for your company {company_name}?",
@@ -99,32 +100,33 @@ def generate_company(industry=None):
 
 def generate_code():
     code_history = []
+    company_name = st.session_state["company_name"]
     # Use a copy of the existing messages
     messages = list(st.session_state["company_history"])
-    # Generate CDP API response using prompt template
-    example_profile_prompt = HumanMessagePromptTemplate(
-        prompt=PromptTemplate(
-            template="Create an example {company_name} CDP based user profile in JSON format. Include rollup traits like ltv and cac. It should look like the profiles that Segment returns from it's Profile API. Return only the JSON, no explanations.",
-            input_variables=["company_name"],
+    coding_prompts = [
+        "Create an example CDP user profile for {company_name}. Generate imaginary computed and predictive traits",
+        "Convert that {company_name} user profile to JSON format.",
+        "Using that {company_name} user profile json, craft a new Faker.js function that will allow for creating fake profiles.",
+    ]
+    for question in coding_prompts:
+        prompt = HumanMessagePromptTemplate(
+            prompt=PromptTemplate(
+                input_variables=["company_name"],
+                template=question,
+            )
         )
-    )
-    example_profile_prompt_message = example_profile_prompt.format(
-        company_name=st.session_state["company_name"]
-    )
-    messages.append(example_profile_prompt_message)
-    print(f"Human", example_profile_prompt)
-    ai_message = chat(messages)
-    ai_message = convert_message_if_needed(ai_message, AIMessage)
-    code_history.extend([example_profile_prompt_message, ai_message])
-    messages.append(ai_message)
-    faker_prompt_message = HumanMessage(
-        content="Based on that JSON example, create a Faker.js function that creates a profile. Return only JavaScript, no explanations"
-    )
-    messages.append(faker_prompt_message)
-    ai_message = chat(messages)
-    ai_message = convert_message_if_needed(ai_message, AIMessage)
-
-    code_history.extend([faker_prompt_message, ai_message])
+        prompts = list(code_history)
+        prompts.append(prompt)
+        chat_prompt = ChatPromptTemplate.from_messages(prompts)
+        messages = chat_prompt.format_prompt(company_name=company_name).to_messages()
+        print(f"Prompting: {messages[-1]}")
+        try:
+            ai_message = chat(messages)
+        except Exception as ex:
+            ai_message = AIMessage(content=f"Whoops...try that again. `{ex}`")
+        ai_message = convert_message_if_needed(ai_message, AIMessage)
+        print(f"Returned: {ai_message.content}")
+        code_history.extend([messages[-1], ai_message])
     st.session_state["code_history"] = code_history
 
 
@@ -162,6 +164,5 @@ if "company_history" in st.session_state:
                 st.markdown(f"> {message.content}")
             elif isinstance(message, AIMessage):
                 st.code(message.content)
-
-    st.markdown("### The company exported as replayable JSON")
-    st.code(json.dumps(messages_to_dict(st.session_state["company_history"]), indent=4))
+    with st.expander("Export replayable JSON"):
+        st.code(json.dumps(messages_to_dict(st.session_state["company_history"]), indent=4))

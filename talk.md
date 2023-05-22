@@ -3,9 +3,11 @@
 - [ ] 👋 Welcome! We're all new here! 👨‍💻👩‍💻 
 - [ ] 🤗🧠 Let's apply some Emotional Intelligence to Artificial Intelligence
 - [ ] LLMs - Large Language Models
-  - [ ] 🧱 Generative
-  - [ ] 👨‍🏫 Pre-trained (45 TB)
-  - [ ] ♺ Transformer
+- [ ] ♺ Transformer
+- [ ] 🌴 PaLM
+  - [ ] 🛣️ Pathways
+  - [ ] 👨‍🏫 Pre-trained
+  - [ ] 🤔 RLHF
 - [ ] 💡 Good example use cases
 - [ ] 🤷‍♂️ And some others...hallucinating?
 - [ ] 👷‍♂️ Prompt engineering

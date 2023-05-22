@@ -7,3 +7,5 @@ SQLAlchemy
 streamlit
 transformers
 torch
+tabulate
+watchdog
