@@ -9,7 +9,9 @@ company_trip = CompanyTrip.from_name("socimind")
 @app.route("/company_chat")
 def company_chat():
     prompt = request.args["prompt"]
+    response = company_trip.ask(prompt)
     return jsonify(
-        response=company_trip.ask(prompt),
+        response=response,
         prompt=prompt,
     )
+
