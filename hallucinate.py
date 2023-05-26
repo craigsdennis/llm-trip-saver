@@ -7,8 +7,7 @@ import os
 import requests
 import streamlit as st
 
-# from langchain.chat_models import ChatOpenAI
-from langchain.chat_models import ChatGooglePalm
+from langchain.chat_models import ChatOpenAI
 from langchain.schema import (
     AIMessage,
     HumanMessage,
@@ -17,12 +16,12 @@ from langchain.schema import (
     messages_to_dict,
 )
 
-from utils.google_palm_tools import convert_message_if_needed
-
 
 @st.cache_resource
 def get_chat():
-    return ChatGooglePalm(temperature=0.7)
+    return ChatOpenAI(
+        model_name=os.environ["OPENAI_MODEL"], temperature=0.7, max_tokens=None
+    )
 
 
 @st.cache_data
@@ -130,8 +129,9 @@ def submit_chat():
     try:
         ai_message = chat(messages)
     except Exception as ex:
-        ai_message = AIMessage(content=f"Hmmm...something went wrong. Try again with a different prompt. {ex}")
-    ai_message = convert_message_if_needed(ai_message, AIMessage)
+        ai_message = AIMessage(
+            content=f"Hmmm...something went wrong. Try again with a different prompt. {ex}"
+        )
     messages.append(ai_message)
     st.session_state["history"] = messages
     st.session_state["system_locked"] = True

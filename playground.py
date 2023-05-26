@@ -7,8 +7,7 @@ import os
 
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.chains import APIChain
-from langchain.chat_models import ChatGooglePalm
-from langchain.llms import GooglePalm
+from langchain.chat_models import ChatOpenAI
 import pandas as pd
 import requests
 import streamlit as st
@@ -94,7 +93,7 @@ with st.form("profiles-api"):
     submitted = st.form_submit_button("Use API")
     if submitted:
         docs = metadata["docs"]
-        llm = GooglePalm(temperature=0)
+        llm = ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0)
         # This is in the notes above that are rendered to the screen
         api_chain = APIChain.from_llm_and_api_docs(llm, docs, verbose=True)
         result = api_chain.run(profiles_prompt)
@@ -124,7 +123,7 @@ This is using LangChain's [pandas DataFrame Agent](https://python.langchain.com/
         # Create a LangChain agent that can query the dataframe using 
         # OpenAI
         return create_pandas_dataframe_agent(
-            GooglePalm(temperature=0),
+            ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0),
             reviews_df,
             verbose=True,
         )
