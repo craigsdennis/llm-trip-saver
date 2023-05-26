@@ -8,7 +8,7 @@ This is handy if you want to force an LLM to create something and then play with
 
 Requires Python > 3.8 [Install](https://python.org)
 
-You're going to need an [Google PaLM API Key](https://makersuite.google.com)
+You're going to need an [OpenAI API KEY](https://platform.openai.com/account/api-keys)
 
 If you are at an event, we'll share the key with you.
 
