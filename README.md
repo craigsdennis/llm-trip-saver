@@ -1,8 +1,10 @@
-# Trip Saver
+# LLM LGTM! 👍
 
-This is a [Streamlit](https://streamlit.io) application that uses [Langchain](https://langchain.com/) to produce a Chat interface. It allows you to import, export and modify previous conversations.
+This is a collection of [Streamlit](https://streamlit.io) applications that use [LangChain](https://langchain.com/) to create AI applications.
 
-This is handy if you want to force an LLM to create something and then play within the world it creates. Causing it to hallucinate is fun...and hallucinating is always better with friends.
+This is handy if you want to force a Large Language Model to create something and then play within the world it creates. Causing it to hallucinate is fun...and hallucinating is always better with friends.
+
+We have created some example companies to explore and provide additional launching off points for you to build.
 
 ## Installation
 
@@ -29,7 +31,11 @@ python -m pip install -r requirements.txt
 streamlit run hallucinate.py
 ```
 
-### Explore some solutions
+### Quickstart
+
+The [Playground](./playground.py) is a great place to start off point for learning Streamlit and LangChain
+
+To run it locally: 
 
 ```bash
 streamlit run playground.py
@@ -39,7 +45,7 @@ This is also available as a [Python Notebook](profile-browser.ipynb)
 
 ### Get the data
 
-We have mocked the company data for you:
+We have mocked the company data for you from previous Company Trips:
 
 - [Shadazzle Profiles](https://llm-companies.cyclic.app/api/shadazzle/profiles?_limit=10)
 - [Fitlyfe Profiles](https://llm-companies.cyclic.app/api/fitlyfe/profiles?_limit=10)
@@ -49,7 +55,7 @@ We have mocked the company data for you:
 
 Create a project that leverages the power of Segment CDP data and AI to enhance the customer experience for a "mock" business. Your project should use data from Twilio Segment CDP to generate insights and drive more personalized interactions with customers. Use your LLM to analyze customer behavior and preferences, and create a solution that automates and streamlines customer interactions, from initial outreach to post-purchase follow-up. Your solution could be a chatbot, voice assistant, or other conversational interface that uses natural language processing and machine learning to provide personalized recommendations, answer questions, and resolve issues.
 
-After 2 hours of hacking, you'll present:
+We'd love you to share what you built, be sure to include:
 - The business problem you're solving for
 - The overview of your planned solution (could be a written outline or mocks, for example)
 - A demo of whatever you've built so far.
@@ -64,4 +70,4 @@ Here are a few examples to help get you in the right headspace:
 - Build an email marketing campaign that uses an LLM to generate subject lines and email content based on customer data stored in Twilio Segment. The campaign should be able to target specific segments of customers and deliver personalized messages that resonate with them.
 - Develop a voice assistant that uses an LLM to understand customer queries and respond with relevant information. The assistant should be able to access customer data stored in Twilio Segment and provide personalized recommendations based on their history and preferences.
 
-Remember, the goal of this Hackathon is to inspire creativity and innovation while highlighting the value of having all your customer data in one place like Twilio Segment.
+Remember, the goal of this Hackathon is to inspire creativity and innovation in building better communications using customer data and communication channels from Twilio

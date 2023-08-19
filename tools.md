@@ -5,7 +5,9 @@
 - [ ] [Trip Saver](https://twil.io/llm-trip-saver)
   - [ ] Load JSON
 - [ ] [Streamlit](https://streamlit.io)
-  - [ ] [Profile Browser Streamlit App](./profile-browser.py)
-- [ ] [Profile Browser Python Notebook](./profile-browser.ipynb)
+  - [ ] [Playground - Quickstart](./playground.py)
   - [ ] [API Reference](https://docs.streamlit.io/library/api-reference)
-- [ ] [Langchain](https://python.langchain.com/en/latest/)
+- [ ] [Playground Python Notebook](./playground.ipynb)
+- [ ] [Flask Server](./server.py)
+- [ ] [Streamlit Chatbot](./chatbot.py)
+- [ ] [LangChain - Python Docs](https://python.langchain.com/docs/)

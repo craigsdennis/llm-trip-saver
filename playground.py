@@ -5,7 +5,7 @@ load_dotenv()
 import json
 import os
 
-from langchain.agents import create_pandas_dataframe_agent
+from langchain.agents import create_pandas_dataframe_agent, AgentType
 from langchain.chains import APIChain
 from langchain.chat_models import ChatOpenAI
 import pandas as pd
@@ -125,6 +125,7 @@ This is using LangChain's [pandas DataFrame Agent](https://python.langchain.com/
         return create_pandas_dataframe_agent(
             ChatOpenAI(model_name=os.environ["OPENAI_MODEL"], temperature=0),
             reviews_df,
+            agent_type=AgentType.OPENAI_FUNCTIONS,
             verbose=True,
         )
 
