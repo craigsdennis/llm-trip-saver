@@ -24,13 +24,6 @@ python -m pip install -r requirements.txt
 
 ## Run the apps
 
-
-### Run existing "trips" or create new ones
-
-```bash
-streamlit run hallucinate.py
-```
-
 ### Quickstart
 
 The [Playground](./playground.py) is a great place to start off point for learning Streamlit and LangChain
@@ -38,10 +31,17 @@ The [Playground](./playground.py) is a great place to start off point for learni
 To run it locally: 
 
 ```bash
-streamlit run playground.py
+python -m streamlit run playground.py
 ```
 
 This is also available as a [Python Notebook](profile-browser.ipynb)
+
+
+### Run existing "trips" or create new ones
+
+```bash
+python -m streamlit run hallucinate.py
+```
 
 ### Get the data
 
