@@ -14,6 +14,7 @@ import streamlit as st
 
 COMPANIES = ("shadazzle", "fitlyfe", "socimind")
 
+
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container, initial_text=""):
         self.container = container
@@ -24,14 +25,13 @@ class StreamHandler(BaseCallbackHandler):
         self.container.markdown(self.text)
 
 
-
 with st.sidebar:
-    
+
     def import_json(json_obj):
         messages = messages_from_dict(json_obj)
         st.session_state["messages"] = messages[1:]
         st.session_state["system_prompter"] = messages[0].content
-        # Should lock?
+        st.session_state["system_locked"] = True
         st.balloons()
 
     with st.form("Load Trip"):
@@ -41,15 +41,13 @@ with st.sidebar:
             format_func=lambda x: x.title(),
             key="company",
         )
-        submitted = st.form_submit_button()
+        submitted = st.form_submit_button("🧳 Load")
         if submitted:
-            full_filepath = os.path.join(
-                "trips", "companies", company + ".json"
-            )
+            full_filepath = os.path.join("trips", "companies", company + ".json")
             with open(full_filepath) as file:
                 json_str = file.read()
                 import_json(json.loads(json_str))
-    
+
     if "system_locked" not in st.session_state:
         st.session_state["system_locked"] = False
 
@@ -59,14 +57,22 @@ with st.sidebar:
         disabled=st.session_state["system_locked"],
     )
 
+    def reset():
+        st.session_state["system_prompter"] = ""
+        st.session_state["messages"] = []
+        st.session_state["system_locked"] = False
+        st.balloons()
+
+    st.button("♻️ Reset", on_click=reset)
+
+
 @st.cache_resource
 def get_chat():
     return ChatOpenAI(model=os.environ["OPENAI_MODEL"], streaming=True)
 
+
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [
-        AIMessage(content="How can I help you?")
-    ]
+    st.session_state["messages"] = [AIMessage(content="How can I help you?")]
 
 for msg in st.session_state.messages:
     role = "assistant" if isinstance(msg, AIMessage) else "user"
@@ -83,3 +89,5 @@ if prompt := st.chat_input():
         system_message = SystemMessage(content=system_prompter)
         response = chat([system_message] + st.session_state.messages)
         st.session_state.messages.append(response)
+        # Don't change system message after you got a response
+        st.session_state["system_locked"] = True

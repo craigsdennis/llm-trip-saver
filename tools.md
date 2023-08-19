@@ -9,4 +9,5 @@
   - [ ] [API Reference](https://docs.streamlit.io/library/api-reference)
 - [ ] [Playground Python Notebook](./playground.ipynb)
 - [ ] [Flask Server](./server.py)
+- [ ] [Streamlit Chatbot](./chatbot.py)
 - [ ] [LangChain - Python Docs](https://python.langchain.com/docs/)
